@@ -16,8 +16,20 @@
   }
 } */
 
-.test {
-  background-color: aliceblue;
+.bt {
+  background-color: #ffffff;
+  border: black solid 2px;
+  margin: 10px;
+  padding: 3px;
+}
+.bt:hover {
+  scale: 1.02;
+  background-color: whitesmoke;
+}
+.bt:active {
+  scale: 1.04;
+  background-color: antiquewhite;
+  /* font-weight: bold; */
 }
 /* body {
   color: rgb(var(--foreground-rgb));

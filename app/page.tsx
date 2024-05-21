@@ -1,11 +1,13 @@
 import Image from "next/image";
+import Stack from "./components/Stack";
+import Panel from "./components/Panel";
 
 export default function Home() {
+  const arr: number[] = [9, 0, 12, 3, 4, 101];
   return (
-    <div className="flex justify-center items-center cursor-default flex-col">
-      <div>stack simulator</div>
-      <br></br>
-      <div>array given: [9, 0, 12, 3, -4, 9.8, 101]</div>
+    <div className="flex justify-center items-center flex-col">
+      <Stack arr={arr}></Stack>
+      <Panel></Panel>
     </div>
   );
 }
