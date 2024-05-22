@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Stack(props: {
   arr: number[];
@@ -7,7 +7,8 @@ export default function Stack(props: {
 }) {
   let stack: number[] = [];
   let copy: number[] = [...props.arr];
-  function formatArr(arr: number[]): string {
+  const [arrCopy, setCopy] = useState([...props.arr]);
+  function formatArr(arr: any): string {
     if (arr.length == 0) {
       return "[]";
     }
@@ -26,6 +27,7 @@ export default function Stack(props: {
         }
         stack.push(copy[i]);
       }
+
       props.setArr(stack);
     }
     if (props.stackType == 2) {
@@ -35,18 +37,31 @@ export default function Stack(props: {
         }
         stack.push(copy[i]);
       }
+
       props.setArr(stack);
     }
+    setCopy([...props.arr]);
     stack = [];
   }, [props.stackType]);
+
+  function chooseCopy(): number[] {
+    if (props.stackType != 0) {
+      return arrCopy;
+    }
+    return props.arr;
+  }
   return (
     <>
       <div className="flex justify-center items-center cursor-default flex-col w-[200px] md:w-[300px]">
         <br></br>
-        <div>array given: {formatArr(copy)}</div>
-        {/* {props.stackType != 0
-          ? `${(<div>array after: [1,2,3]</div>)}`
-          : `${(<div> </div>)}`} */}
+        <div>
+          <b>array given:</b> {formatArr(chooseCopy())}
+        </div>
+        <div>
+          <b>array after: </b>
+          {props.stackType != 0 ? `${formatArr(props.arr)}` : `null`}
+        </div>
+
         <br></br>
         <br></br>
         <div className="flex justify-end items-center flex-col border-2 border-[#000000] w-[250px] h-[300px] bg-[whitesmoke]">
