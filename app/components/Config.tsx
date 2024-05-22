@@ -47,20 +47,36 @@ export default function Config(props: {
 
   return (
     <div className="flex flex-col items-center mb-[2.3%] ml-[10%] w-[20%] h-[40%] bg-[#BFCACD] border-2 border-black">
-      <b className="mt-[10px]">Configure</b>
+      <b className="mt-[10px]">configure</b>
       <div className="flex flex-col justify-center items-center mt-[10px]">
-        <button className="bt w-[125px]" id="1a" onClick={(e) => pushArr()}>
-          Push
+        <button
+          className="bt w-[75px] md:w-[125px]"
+          id="1a"
+          onClick={(e) => pushArr()}
+        >
+          push
         </button>
-        <button className="bt w-[125px]" id="3a" onClick={(e) => popTop()}>
-          Pop top
+        <button
+          className="bt w-[75px] md:w-[125px]"
+          id="3a"
+          onClick={(e) => popTop()}
+        >
+          pop top
         </button>
-        <button className="bt w-[125px]" id="2a" onClick={(e) => popBot()}>
-          Pop bottom
+        <button
+          className="bt w-[75px] md:w-[125px]"
+          id="2a"
+          onClick={(e) => popBot()}
+        >
+          pop bottom
         </button>
 
-        <button className="bt w-[125px]" id="4a" onClick={(e) => clearArr()}>
-          Clear
+        <button
+          className="bt w-[75px] md:w-[125px]"
+          id="4a"
+          onClick={(e) => clearArr()}
+        >
+          clear
         </button>
       </div>
     </div>

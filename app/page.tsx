@@ -10,8 +10,11 @@ export default function Home() {
   const [arr, setArr] = useState([9, 0, 12, 3, 4, 76]);
   const [stackType, setStackType] = useState(0);
   return (
-    <div className="flex justify-center items-center flex-col">
-      <div className="w-[750px] flex flex-row ml-[30%] items-end">
+    <div className="flex justify-center items-center flex-col cursor-default text-sm md:text-base">
+      <b className="p-[5px] bg-[#F6F2C2] text-center border-2 border-black border-t-0">
+        stack simulator
+      </b>
+      <div className="w-[500px] md:w-[750px] flex flex-row items-end justify-end">
         <Stack arr={arr} setArr={setArr} stackType={stackType}></Stack>
         <Config
           arr={arr}

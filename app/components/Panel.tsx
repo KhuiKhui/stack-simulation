@@ -21,15 +21,15 @@ export default function Panel(props: {
   }
 
   return (
-    <div className="flex flex-col items-center mt-[50px] w-[40%] h-[150px] bg-[#BFCACD] border-2 border-black">
-      <b className="mt-[10px]">Stack Control Panel</b>
+    <div className="flex flex-col items-center mt-[50px] w-[300px] sm:w-[450px] md:w-[600px] h-[150px] bg-[#BFCACD] border-2 border-black">
+      <b className="mt-[10px]">stack control panel</b>
 
       <div className="flex flex-row justify-center items-center mt-[30px]">
         <button className="bt" id="1" onClick={(e) => handleClick(e)}>
-          Increasing Monotonic Stack
+          increasing monotonic stack
         </button>
         <button className="bt" id="2" onClick={(e) => handleClick(e)}>
-          Decreasing Monotonic Stack
+          decreasing monotonic stack
         </button>
       </div>
     </div>

@@ -5,18 +5,19 @@ export default function Stack(props: {
   setArr: Function;
   stackType: number;
 }) {
-  function formatArr(): string {
-    if (props.arr.length == 0) {
+  let stack: number[] = [];
+  let copy: number[] = [...props.arr];
+  function formatArr(arr: number[]): string {
+    if (arr.length == 0) {
       return "[]";
     }
     let formatted: string = "[";
-    for (let i = 0; i < props.arr.length; i++) {
-      formatted += props.arr[i] + ", ";
+    for (let i = 0; i < arr.length; i++) {
+      formatted += arr[i] + ", ";
     }
     return formatted.substring(0, formatted.length - 2) + "]";
   }
-  let stack: number[] = [];
-  let copy: number[] = [...props.arr];
+
   const mode = useEffect(() => {
     if (props.stackType == 1) {
       for (let i: number = 0; i < copy.length; i++) {
@@ -39,45 +40,47 @@ export default function Stack(props: {
     stack = [];
   }, [props.stackType]);
   return (
-    <div className="flex justify-center items-center cursor-default flex-col w-[300px]">
-      <div className="w-[200px] p-[5px] bg-[#F6F2C2] text-center border-2 border-black border-t-0">
-        stack simulator
-      </div>
-      <br></br>
-      <div>array given: {formatArr()}</div>
-      <br></br>
-      <br></br>
-      <div className="flex justify-end items-center flex-col cursor-default border-2 border-[#000000] w-[250px] h-[300px] bg-[whitesmoke]">
-        <b className="mt-[10px] grow">Stack</b>
-        <div className="">
-          {props.arr.map((ele: number, index: number) => {
-            return (
-              <>
-                <div
-                  className={`flex flex-row items-center ${
-                    props.arr.length - index - 1 == 0
-                      ? "bg-[#AECDE0]"
-                      : "bg-[#BFCACD]"
-                  }
+    <>
+      <div className="flex justify-center items-center cursor-default flex-col w-[200px] md:w-[300px]">
+        <br></br>
+        <div>array given: {formatArr(copy)}</div>
+        {/* {props.stackType != 0
+          ? `${(<div>array after: [1,2,3]</div>)}`
+          : `${(<div> </div>)}`} */}
+        <br></br>
+        <br></br>
+        <div className="flex justify-end items-center flex-col border-2 border-[#000000] w-[250px] h-[300px] bg-[whitesmoke]">
+          <b className="mt-[10px] grow">stack</b>
+          <div className="">
+            {props.arr.map((ele: number, index: number) => {
+              return (
+                <>
+                  <div
+                    className={`flex flex-row items-center ${
+                      props.arr.length - index - 1 == 0
+                        ? "bg-[#AECDE0]"
+                        : "bg-[#BFCACD]"
+                    }
                 ${
                   props.arr.length - index - 1 == props.arr.length - 1
                     ? "bg-[#FFE660]"
                     : "bg-[#BFCACD]"
                 } w-40 m-[4px] p-0.5 text-center hover:scale-[1.1] border-2 border-black`}
-                >
-                  <div className="bg-[#FFFFFF] w-[20px] text-center border-2">
-                    {props.arr.length - index - 1}
+                  >
+                    <div className="bg-[#FFFFFF] w-[20px] text-center border-2">
+                      {props.arr.length - index - 1}
+                    </div>
+                    <div className="w-[138px] text-center">
+                      {props.arr[props.arr.length - index - 1]}
+                    </div>
                   </div>
-                  <div className="w-[138px] text-center">
-                    {props.arr[props.arr.length - index - 1]}
-                  </div>
-                </div>
-              </>
-            );
-          })}
+                </>
+              );
+            })}
+          </div>
+          <br></br>
         </div>
-        <br></br>
       </div>
-    </div>
+    </>
   );
 }
