@@ -1,4 +1,10 @@
-export default function Stack(props: { arr: number[] }) {
+import { useEffect } from "react";
+
+export default function Stack(props: {
+  arr: number[];
+  setArr: Function;
+  stackType: number;
+}) {
   function formatArr(): string {
     if (props.arr.length == 0) {
       return "[]";
@@ -9,6 +15,29 @@ export default function Stack(props: { arr: number[] }) {
     }
     return formatted.substring(0, formatted.length - 2) + "]";
   }
+  let stack: number[] = [];
+  let copy: number[] = [...props.arr];
+  const mode = useEffect(() => {
+    if (props.stackType == 1) {
+      for (let i = 0; i < copy.length; i++) {
+        while (stack.length != 0 && copy[i] <= stack[stack.length - 1]) {
+          stack.pop();
+        }
+        stack.push(copy[i]);
+      }
+      props.setArr(stack);
+    }
+    if (props.stackType == 2) {
+      for (let i = 0; i < copy.length; i++) {
+        while (stack.length > 0 && copy[i] >= stack[stack.length - 1]) {
+          stack.pop();
+        }
+        stack.push(copy[i]);
+      }
+      props.setArr(stack);
+    }
+    stack = [];
+  }, [props.stackType]);
   return (
     <div className="flex justify-center items-center cursor-default flex-col w-[300px]">
       <div className="w-[200px] p-[5px] bg-[#F6F2C2] text-center border-2 border-black border-t-0">

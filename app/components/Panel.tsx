@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export default function Panel(props: {
   stackType: number;
   setStackType: Function;
@@ -17,6 +19,7 @@ export default function Panel(props: {
       props.setStackType(0);
     }
   }
+
   return (
     <div className="flex flex-col items-center mt-[50px] w-[40%] h-[150px] bg-[#BFCACD] border-2 border-black">
       <b className="mt-[10px]">Stack Control Panel</b>
@@ -27,9 +30,6 @@ export default function Panel(props: {
         </button>
         <button className="bt" id="2" onClick={(e) => handleClick(e)}>
           Decreasing Monotonic Stack
-        </button>
-        <button className="bt" id="3" onClick={(e) => handleClick(e)}>
-          Queue
         </button>
       </div>
     </div>
