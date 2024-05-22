@@ -19,7 +19,7 @@ export default function Stack(props: {
   let copy: number[] = [...props.arr];
   const mode = useEffect(() => {
     if (props.stackType == 1) {
-      for (let i = 0; i < copy.length; i++) {
+      for (let i: number = 0; i < copy.length; i++) {
         while (stack.length != 0 && copy[i] <= stack[stack.length - 1]) {
           stack.pop();
         }
@@ -28,7 +28,7 @@ export default function Stack(props: {
       props.setArr(stack);
     }
     if (props.stackType == 2) {
-      for (let i = 0; i < copy.length; i++) {
+      for (let i: number = 0; i < copy.length; i++) {
         while (stack.length > 0 && copy[i] >= stack[stack.length - 1]) {
           stack.pop();
         }
