@@ -52,25 +52,27 @@ export default function Stack(props: {
         <div className="">
           {props.arr.map((ele: number, index: number) => {
             return (
-              <div
-                className={`flex flex-row items-center ${
-                  props.arr.length - index - 1 == 0
-                    ? "bg-[#AECDE0]"
-                    : "bg-[#BFCACD]"
-                }
+              <>
+                <div
+                  className={`flex flex-row items-center ${
+                    props.arr.length - index - 1 == 0
+                      ? "bg-[#AECDE0]"
+                      : "bg-[#BFCACD]"
+                  }
                 ${
                   props.arr.length - index - 1 == props.arr.length - 1
                     ? "bg-[#FFE660]"
                     : "bg-[#BFCACD]"
                 } w-40 m-[4px] p-0.5 text-center hover:scale-[1.1] border-2 border-black`}
-              >
-                <div className="bg-[#FFFFFF] w-[20px] text-center border-2">
-                  {props.arr.length - index - 1}
+                >
+                  <div className="bg-[#FFFFFF] w-[20px] text-center border-2">
+                    {props.arr.length - index - 1}
+                  </div>
+                  <div className="w-[138px] text-center">
+                    {props.arr[props.arr.length - index - 1]}
+                  </div>
                 </div>
-                <div className="w-[138px] text-center">
-                  {props.arr[props.arr.length - index - 1]}
-                </div>
-              </div>
+              </>
             );
           })}
         </div>
